@@ -1,0 +1,896 @@
+/* =====================================================
+   BT Document Processor - Custom Styles
+   ===================================================== */
+
+:root {
+    --primary-bg: #0F1B3F;
+    --secondary-bg: #1a2847;
+    --card-border: #3F4F7C;
+    --text-primary: #F0F6FD;
+    --text-secondary: #fff;
+    --accent-color: #4169e1;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+}
+
+/* =====================================================
+   Global Styles
+   ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* =====================================================
+   Navigation Bar
+   ===================================================== */
+
+#mainNav {
+    background-color: var(--primary-bg);
+    border-bottom: 2px solid var(--card-border);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#mainNav .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-secondary) !important;
+    transition: all 0.3s ease;
+}
+
+#mainNav .navbar-brand:hover {
+    color: var(--accent-color) !important;
+    transform: scale(1.05);
+}
+
+#mainNav .navbar-brand i {
+    margin-right: 0.5rem;
+    color: var(--accent-color);
+}
+
+#mainNav .nav-link {
+    color: var(--text-primary) !important;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+    position: relative;
+}
+
+#mainNav .nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+#mainNav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+#mainNav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* =====================================================
+   Main Content Area
+   ===================================================== */
+
+.main-content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.main-content h1 {
+    color: var(--text-secondary);
+    font-weight: 700;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.main-content h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--card-border));
+    border-radius: 2px;
+}
+
+.main-content h1 i {
+    margin-right: 1rem;
+    color: var(--accent-color);
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* =====================================================
+   Stat Cards
+   ===================================================== */
+
+.stat-card {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, rgba(63, 79, 124, 0.2) 100%);
+    border: 2px solid var(--card-border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--card-border));
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover::before {
+    transform: translateX(0);
+}
+
+.stat-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 16px rgba(65, 105, 225, 0.15);
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(65, 105, 225, 0.1);
+    border-radius: 10px;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-label {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    color: var(--text-secondary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* =====================================================
+   Chart Cards
+   ===================================================== */
+
+.chart-card {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, rgba(63, 79, 124, 0.2) 100%);
+    border: 2px solid var(--card-border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.chart-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 16px rgba(65, 105, 225, 0.15);
+    transform: translateY(-5px);
+}
+
+.chart-card .card-title {
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--card-border);
+}
+
+canvas {
+    max-height: 300px;
+}
+
+/* =====================================================
+   Upload Section
+   ===================================================== */
+
+.upload-card {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, rgba(63, 79, 124, 0.2) 100%);
+    border: 2px solid var(--card-border);
+    border-radius: 12px;
+    padding: 3rem;
+    transition: all 0.3s ease;
+}
+
+.upload-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 16px rgba(65, 105, 225, 0.15);
+}
+
+.drop-zone {
+    border: 3px dashed var(--card-border);
+    border-radius: 10px;
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(65, 105, 225, 0.05);
+}
+
+.drop-zone:hover,
+.drop-zone.drag-over {
+    border-color: var(--accent-color);
+    background: rgba(65, 105, 225, 0.1);
+    transform: scale(1.02);
+}
+
+.drop-zone-content i {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.drop-zone-content h4 {
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.drop-zone-content p {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.drop-zone-content small {
+    color: var(--text-primary);
+    opacity: 0.8;
+    display: block;
+}
+
+/* =====================================================
+   File List
+   ===================================================== */
+
+.file-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.file-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.file-list::-webkit-scrollbar-track {
+    background: rgba(63, 79, 124, 0.2);
+    border-radius: 10px;
+}
+
+.file-list::-webkit-scrollbar-thumb {
+    background: var(--card-border);
+    border-radius: 10px;
+}
+
+.file-list::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(65, 105, 225, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.file-item:hover {
+    background: rgba(65, 105, 225, 0.1);
+    border-color: var(--accent-color);
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.file-icon {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.file-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.file-details .file-name {
+    color: var(--text-secondary);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-details .file-size {
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.file-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.file-actions button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+/* =====================================================
+   Processing Options
+   ===================================================== */
+
+.processing-options {
+    background: rgba(65, 105, 225, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.processing-options h5 {
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.form-check {
+    margin-bottom: 1rem;
+}
+
+.form-check-input {
+    border-color: var(--card-border);
+    accent-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.form-check-label {
+    color: var(--text-primary);
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+/* =====================================================
+   Action Buttons
+   ===================================================== */
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--text-secondary);
+    border-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(65, 105, 225, 0.3);
+}
+
+.btn-primary:disabled {
+    background-color: var(--card-border);
+    border-color: var(--card-border);
+    color: var(--text-primary);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--accent-color);
+    border-color: var(--card-border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--card-border);
+    color: var(--text-secondary);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(63, 79, 124, 0.3);
+}
+
+/* =====================================================
+   Results Section
+   ===================================================== */
+
+.results-card {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, rgba(63, 79, 124, 0.2) 100%);
+    border: 2px solid var(--card-border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.results-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 16px rgba(65, 105, 225, 0.15);
+}
+
+.filter-bar {
+    background: rgba(65, 105, 225, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+}
+
+.form-control,
+.form-select {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--card-border);
+    color: var(--text-primary);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: var(--text-primary);
+    opacity: 0.6;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: var(--accent-color);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 0.2rem rgba(65, 105, 225, 0.25);
+}
+
+.form-select option {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+}
+
+/* =====================================================
+   Data Tables
+   ===================================================== */
+
+.table {
+    color: var(--text-primary);
+    border-color: var(--card-border);
+}
+
+.table thead {
+    background-color: rgba(65, 105, 225, 0.1);
+    border-color: var(--card-border);
+}
+
+.table thead th {
+    color: var(--text-secondary);
+    font-weight: 600;
+    border-color: var(--card-border);
+    padding: 1rem;
+}
+
+.table tbody td {
+    border-color: var(--card-border);
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(65, 105, 225, 0.05);
+    border-color: var(--accent-color);
+}
+
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status-completed {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+.status-processing {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    border: 1px solid #ffc107;
+}
+
+.status-failed {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.empty-state {
+    color: var(--text-primary);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: var(--card-border);
+    opacity: 0.5;
+}
+
+.empty-state h5 {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.empty-state p {
+    opacity: 0.7;
+}
+
+/* =====================================================
+   Pagination
+   ===================================================== */
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: var(--text-primary) !important;
+    border: 1px solid var(--card-border) !important;
+    background-color: transparent !important;
+    cursor: pointer;
+    margin: 0 0.2rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: var(--card-border) !important;
+    color: var(--text-secondary) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background-color: var(--accent-color) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--accent-color) !important;
+}
+
+/* =====================================================
+   Insight Cards
+   ===================================================== */
+
+.insight-card {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, rgba(63, 79, 124, 0.2) 100%);
+    border: 2px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.insight-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 16px rgba(65, 105, 225, 0.15);
+    transform: translateY(-5px);
+}
+
+.insight-card h5 {
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.insight-card h5 i {
+    margin-right: 0.5rem;
+    color: var(--accent-color);
+}
+
+.insight-card p {
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* =====================================================
+   Modal Styles
+   ===================================================== */
+
+.modal-content {
+    background-color: var(--primary-bg);
+    border: 2px solid var(--card-border);
+    border-radius: 12px;
+}
+
+.modal-header {
+    border-color: var(--card-border);
+    background-color: rgba(65, 105, 225, 0.05);
+}
+
+.modal-header .modal-title {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+.modal-body {
+    color: var(--text-primary);
+}
+
+.modal-footer {
+    border-color: var(--card-border);
+}
+
+/* =====================================================
+   Footer
+   ===================================================== */
+
+.footer {
+    background-color: var(--primary-bg);
+    border-top: 2px solid var(--card-border);
+    margin-top: auto;
+}
+
+.footer p {
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* =====================================================
+   Processing Bar
+   ===================================================== */
+
+.progress {
+    background-color: rgba(65, 105, 225, 0.1);
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    height: 25px;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--accent-color), var(--card-border));
+    animation: progress-animation 2s ease-in-out infinite;
+}
+
+@keyframes progress-animation {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* =====================================================
+   Loading Spinner
+   ===================================================== */
+
+.spinner-border {
+    color: var(--accent-color);
+    width: 3rem;
+    height: 3rem;
+}
+
+.spinner-border-sm {
+    color: var(--accent-color);
+}
+
+/* =====================================================
+   Responsive Design
+   ===================================================== */
+
+@media (max-width: 768px) {
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .upload-card {
+        padding: 1.5rem;
+    }
+
+    .drop-zone {
+        padding: 2rem 1rem;
+    }
+
+    .drop-zone-content i {
+        font-size: 2rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-buttons .btn {
+        width: 100%;
+    }
+
+    .filter-bar .row {
+        row-gap: 1rem;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .table thead th,
+    .table tbody td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    #mainNav .nav-link {
+        margin-left: 0;
+    }
+
+    section {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+
+    .main-content h1 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .stat-value {
+        font-size: 1.25rem;
+    }
+
+    .chart-card {
+        padding: 1rem;
+    }
+
+    canvas {
+        max-height: 250px !important;
+    }
+
+    .upload-card {
+        padding: 1rem;
+    }
+
+    .main-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .table-responsive {
+        font-size: 0.8rem;
+    }
+}
+
+/* =====================================================
+   Animation Classes
+   ===================================================== */
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* =====================================================
+   Utility Classes
+   ===================================================== */
+
+.text-accent {
+    color: var(--accent-color);
+}
+
+.bg-accent-light {
+    background-color: rgba(65, 105, 225, 0.1);
+}
+
+.border-accent {
+    border-color: var(--accent-color) !important;
+}
